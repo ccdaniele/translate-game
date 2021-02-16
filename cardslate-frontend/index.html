@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cardslate</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h2>Cardslate</h2>
+    </header>
+
+    <main>
+
+      <div id="mainForm">
+        <form>
+          <label for="name">User Name:</label><br>
+          <input type="text" id="name" name="name"><br>
+          <label for="select-language">Language:</label>
+          <br>
+            <select id="language-dropdown" name="select-language">
+                <option value="English">English</option>
+                <option value="Spanish">Spanish</option>
+            </select>
+            <br><br>
+            <label for="select-category">Language Category:</label>
+            <br>
+            <select id="category-dropdown" name="select-category">
+                <option value="Animals">Animals</option>
+                <option value="Foods">Foods</option>
+                <option value="Objects">Objects</option>
+                <option value="Sports">Sports</option>
+                <option value="Emotions">Emotions</option>
+            </select><br><br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+
+      <div id="mainGame">
+        <!-- game goes here  -->
+      </div>
+
+    </main>
+    <script src="./src/index.js" defer></script>
+  </body>
+</html>

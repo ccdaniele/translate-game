@@ -1,0 +1,779 @@
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210215193009)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "point" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215193009"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateGames (20210215205154)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "games" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "category_id" integer, "language" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205154"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCategories (20210215205310)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (15.1ms)[0m  [1m[35mCREATE TABLE "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205310"]]
+  [1m[36mTRANSACTION (49.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateWords (20210215205419)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "words" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image" varchar, "category_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205419"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-02-15 22:47:00.941400"], ["updated_at", "2021-02-15 22:47:00.941400"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateWords (20210215205419)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "words"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.6ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20210215205419"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCategories (20210215205310)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "categories"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20210215205310"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateGames (20210215205154)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "games"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20210215205154"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210215193009)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20210215193009"]]
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210215193009)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "point" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215193009"]]
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateGames (20210215205154)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "games" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "category_id" integer, "language" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205154"]]
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCategories (20210215205310)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "type" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205310"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateWords (20210215205419)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "words" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image" varchar, "category_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205419"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210215193009)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "point" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215193009"]]
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateGames (20210215205154)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "games" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "category_id" integer, "language" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205154"]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCategories (20210215205310)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205310"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateWords (20210215205419)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "words" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image" varchar, "category_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205419"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-02-15 22:51:30.242495"], ["updated_at", "2021-02-15 22:51:30.242495"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Animals"], ["created_at", "2021-02-15 22:51:51.423371"], ["updated_at", "2021-02-15 22:51:51.423371"]]
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Emotions"], ["created_at", "2021-02-15 22:51:51.435728"], ["updated_at", "2021-02-15 22:51:51.435728"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Foods"], ["created_at", "2021-02-15 22:51:51.439748"], ["updated_at", "2021-02-15 22:51:51.439748"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Objects"], ["created_at", "2021-02-15 22:51:51.443425"], ["updated_at", "2021-02-15 22:51:51.443425"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sports"], ["created_at", "2021-02-15 22:51:51.446764"], ["updated_at", "2021-02-15 22:51:51.446764"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Animals"], ["created_at", "2021-02-15 22:52:17.399685"], ["updated_at", "2021-02-15 22:52:17.399685"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Emotions"], ["created_at", "2021-02-15 22:52:17.407435"], ["updated_at", "2021-02-15 22:52:17.407435"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Foods"], ["created_at", "2021-02-15 22:52:17.418633"], ["updated_at", "2021-02-15 22:52:17.418633"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Objects"], ["created_at", "2021-02-15 22:52:17.428162"], ["updated_at", "2021-02-15 22:52:17.428162"]]
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sports"], ["created_at", "2021-02-15 22:52:17.443665"], ["updated_at", "2021-02-15 22:52:17.443665"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "categories"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Destroy (0.4ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 2]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 3]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 4]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 5]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Destroy (0.4ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 6]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 7]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 8]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Destroy (0.3ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 9]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Destroy (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 10]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mWord Load (0.2ms)[0m  [1m[34mSELECT "words".* FROM "words"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Animals"], ["created_at", "2021-02-15 22:53:46.699428"], ["updated_at", "2021-02-15 22:53:46.699428"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Emotions"], ["created_at", "2021-02-15 22:53:46.703191"], ["updated_at", "2021-02-15 22:53:46.703191"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Foods"], ["created_at", "2021-02-15 22:53:46.707079"], ["updated_at", "2021-02-15 22:53:46.707079"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Objects"], ["created_at", "2021-02-15 22:53:46.710668"], ["updated_at", "2021-02-15 22:53:46.710668"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sports"], ["created_at", "2021-02-15 22:53:46.714210"], ["updated_at", "2021-02-15 22:53:46.714210"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "categories"[0m
+  [1m[36mWord Load (0.2ms)[0m  [1m[34mSELECT "words".* FROM "words" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mWord Load (0.1ms)[0m  [1m[34mSELECT "words".* FROM "words" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mWord Load (0.2ms)[0m  [1m[34mSELECT "words".* FROM "words" WHERE "words"."category_id" = ? /* loading for inspect */ LIMIT ?[0m  [["category_id", 11], ["LIMIT", 11]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mWord Create (0.5ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "apple"], ["image", ""], ["category_id", 11], ["created_at", "2021-02-15 23:03:44.796373"], ["updated_at", "2021-02-15 23:03:44.796373"]]
+  [1m[36mTRANSACTION (8.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210215193009)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "point" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215193009"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateGames (20210215205154)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "games" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "category_id" integer, "language" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205154"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCategories (20210215205310)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205310"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateWords (20210215205419)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "words" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image" varchar, "category_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205419"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-02-15 23:04:55.000208"], ["updated_at", "2021-02-15 23:04:55.000208"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mWord Load (0.1ms)[0m  [1m[34mSELECT "words".* FROM "words"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Animals"], ["created_at", "2021-02-15 23:05:01.906513"], ["updated_at", "2021-02-15 23:05:01.906513"]]
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Emotions"], ["created_at", "2021-02-15 23:05:01.925774"], ["updated_at", "2021-02-15 23:05:01.925774"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Foods"], ["created_at", "2021-02-15 23:05:01.934406"], ["updated_at", "2021-02-15 23:05:01.934406"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Objects"], ["created_at", "2021-02-15 23:05:01.943952"], ["updated_at", "2021-02-15 23:05:01.943952"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sports"], ["created_at", "2021-02-15 23:05:01.958455"], ["updated_at", "2021-02-15 23:05:01.958455"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mWord Load (0.2ms)[0m  [1m[34mSELECT "words".* FROM "words" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210215193009)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "point" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215193009"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateGames (20210215205154)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "games" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "category_id" integer, "language" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205154"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCategories (20210215205310)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205310"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateWords (20210215205419)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "words" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "image" varchar, "category_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210215205419"]]
+  [1m[36mTRANSACTION (11.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-02-15 23:06:45.201929"], ["updated_at", "2021-02-15 23:06:45.201929"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mWord Load (0.1ms)[0m  [1m[34mSELECT "words".* FROM "words"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Animals"], ["created_at", "2021-02-15 23:06:52.876139"], ["updated_at", "2021-02-15 23:06:52.876139"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Emotions"], ["created_at", "2021-02-15 23:06:52.880344"], ["updated_at", "2021-02-15 23:06:52.880344"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Foods"], ["created_at", "2021-02-15 23:06:52.885438"], ["updated_at", "2021-02-15 23:06:52.885438"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Objects"], ["created_at", "2021-02-15 23:06:52.894835"], ["updated_at", "2021-02-15 23:06:52.894835"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Sports"], ["created_at", "2021-02-15 23:06:52.898389"], ["updated_at", "2021-02-15 23:06:52.898389"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "dog"], ["image", "🐶"], ["category_id", 1], ["created_at", "2021-02-15 23:06:52.912902"], ["updated_at", "2021-02-15 23:06:52.912902"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "happy"], ["image", "😄"], ["category_id", 2], ["created_at", "2021-02-15 23:06:52.918051"], ["updated_at", "2021-02-15 23:06:52.918051"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "apple"], ["image", "🍎"], ["category_id", 3], ["created_at", "2021-02-15 23:06:52.923360"], ["updated_at", "2021-02-15 23:06:52.923360"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "headphones"], ["image", "🎧"], ["category_id", 4], ["created_at", "2021-02-15 23:06:52.929903"], ["updated_at", "2021-02-15 23:06:52.929903"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "soccer"], ["image", "⚽️"], ["category_id", 5], ["created_at", "2021-02-15 23:06:52.942402"], ["updated_at", "2021-02-15 23:06:52.942402"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "cat"], ["image", "🐈"], ["category_id", 1], ["created_at", "2021-02-15 23:06:52.948483"], ["updated_at", "2021-02-15 23:06:52.948483"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "sad"], ["image", "☹️"], ["category_id", 2], ["created_at", "2021-02-15 23:06:52.953832"], ["updated_at", "2021-02-15 23:06:52.953832"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "orange"], ["image", "🍊"], ["category_id", 3], ["created_at", "2021-02-15 23:06:52.958536"], ["updated_at", "2021-02-15 23:06:52.958536"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "umbrella"], ["image", "☂️"], ["category_id", 4], ["created_at", "2021-02-15 23:06:52.963040"], ["updated_at", "2021-02-15 23:06:52.963040"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "basketball"], ["image", "🏀"], ["category_id", 5], ["created_at", "2021-02-15 23:06:52.968041"], ["updated_at", "2021-02-15 23:06:52.968041"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "mouse"], ["image", "🐭"], ["category_id", 1], ["created_at", "2021-02-15 23:06:52.972912"], ["updated_at", "2021-02-15 23:06:52.972912"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "laugh"], ["image", "😂"], ["category_id", 2], ["created_at", "2021-02-15 23:06:52.979088"], ["updated_at", "2021-02-15 23:06:52.979088"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (1.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "banana"], ["image", "🍌"], ["category_id", 3], ["created_at", "2021-02-15 23:06:52.985485"], ["updated_at", "2021-02-15 23:06:52.985485"]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "game controller"], ["image", "🎮"], ["category_id", 4], ["created_at", "2021-02-15 23:06:52.997530"], ["updated_at", "2021-02-15 23:06:52.997530"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "volleyball"], ["image", "🏐"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.005026"], ["updated_at", "2021-02-15 23:06:53.005026"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "bear"], ["image", "🐻"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.013080"], ["updated_at", "2021-02-15 23:06:53.013080"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "mad"], ["image", "😡"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.017827"], ["updated_at", "2021-02-15 23:06:53.017827"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "strawberry"], ["image", "🍓"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.022536"], ["updated_at", "2021-02-15 23:06:53.022536"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "telephone"], ["image", "☎️"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.027306"], ["updated_at", "2021-02-15 23:06:53.027306"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "baseball"], ["image", "⚾️"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.031926"], ["updated_at", "2021-02-15 23:06:53.031926"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "tiger"], ["image", "🐯"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.036750"], ["updated_at", "2021-02-15 23:06:53.036750"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "confused"], ["image", "🤷‍♂️"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.041484"], ["updated_at", "2021-02-15 23:06:53.041484"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "corn"], ["image", "🌽"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.046223"], ["updated_at", "2021-02-15 23:06:53.046223"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "clock"], ["image", "⏰"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.051892"], ["updated_at", "2021-02-15 23:06:53.051892"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "tennis"], ["image", "🎾"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.057223"], ["updated_at", "2021-02-15 23:06:53.057223"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "pig"], ["image", "🐷"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.083432"], ["updated_at", "2021-02-15 23:06:53.083432"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "love"], ["image", "🥰"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.090694"], ["updated_at", "2021-02-15 23:06:53.090694"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "cheese"], ["image", "🧀"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.096873"], ["updated_at", "2021-02-15 23:06:53.096873"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "television"], ["image", "📺"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.105767"], ["updated_at", "2021-02-15 23:06:53.105767"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "american football"], ["image", "🏈"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.113936"], ["updated_at", "2021-02-15 23:06:53.113936"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "frog"], ["image", "🐸"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.120396"], ["updated_at", "2021-02-15 23:06:53.120396"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "nervous"], ["image", "😬"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.125357"], ["updated_at", "2021-02-15 23:06:53.125357"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "avocado"], ["image", "🥑"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.131039"], ["updated_at", "2021-02-15 23:06:53.131039"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "money"], ["image", "💵"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.136483"], ["updated_at", "2021-02-15 23:06:53.136483"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "boxing"], ["image", "🥊"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.141614"], ["updated_at", "2021-02-15 23:06:53.141614"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "monkey"], ["image", "🐒"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.147305"], ["updated_at", "2021-02-15 23:06:53.147305"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "sick"], ["image", "🤒"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.155896"], ["updated_at", "2021-02-15 23:06:53.155896"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "bacon"], ["image", "🥓"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.163687"], ["updated_at", "2021-02-15 23:06:53.163687"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "computer"], ["image", "💻"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.172042"], ["updated_at", "2021-02-15 23:06:53.172042"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "skiing"], ["image", "⛷"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.180001"], ["updated_at", "2021-02-15 23:06:53.180001"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "bunny"], ["image", "🐰"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.188754"], ["updated_at", "2021-02-15 23:06:53.188754"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "scared"], ["image", "😨"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.197250"], ["updated_at", "2021-02-15 23:06:53.197250"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "burger"], ["image", "🍔"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.205279"], ["updated_at", "2021-02-15 23:06:53.205279"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "axe"], ["image", "\u{1FA93}"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.213592"], ["updated_at", "2021-02-15 23:06:53.213592"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "wrestling"], ["image", "🤼‍♂️"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.222114"], ["updated_at", "2021-02-15 23:06:53.222114"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "horse"], ["image", "🐎"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.230574"], ["updated_at", "2021-02-15 23:06:53.230574"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "hungry"], ["image", "🤤"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.238369"], ["updated_at", "2021-02-15 23:06:53.238369"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "egg"], ["image", "🥚"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.247187"], ["updated_at", "2021-02-15 23:06:53.247187"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "hammer"], ["image", "🔨"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.255012"], ["updated_at", "2021-02-15 23:06:53.255012"]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "swimming"], ["image", "🏊‍♀️"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.263676"], ["updated_at", "2021-02-15 23:06:53.263676"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "butterfly"], ["image", "🦋"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.272037"], ["updated_at", "2021-02-15 23:06:53.272037"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "drunk"], ["image", "🥴\u{1F971}"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.280883"], ["updated_at", "2021-02-15 23:06:53.280883"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "pizza"], ["image", "🍕"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.289323"], ["updated_at", "2021-02-15 23:06:53.289323"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "pencil"], ["image", "✏️"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.310306"], ["updated_at", "2021-02-15 23:06:53.310306"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "cycling"], ["image", "🚵‍♂️"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.315511"], ["updated_at", "2021-02-15 23:06:53.315511"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "bee"], ["image", "🐝"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.322647"], ["updated_at", "2021-02-15 23:06:53.322647"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "tired"], ["image", "😱"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.330037"], ["updated_at", "2021-02-15 23:06:53.330037"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "salad"], ["image", "🥗"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.338413"], ["updated_at", "2021-02-15 23:06:53.338413"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "key"], ["image", "🔑"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.346910"], ["updated_at", "2021-02-15 23:06:53.346910"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "weight lifting"], ["image", "🏋️‍♀️"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.354710"], ["updated_at", "2021-02-15 23:06:53.354710"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "chicken"], ["image", "🐓"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.359438"], ["updated_at", "2021-02-15 23:06:53.359438"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "shocked"], ["image", "🤬"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.372227"], ["updated_at", "2021-02-15 23:06:53.372227"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "cake"], ["image", "🍰"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.380353"], ["updated_at", "2021-02-15 23:06:53.380353"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "knife"], ["image", "🔪"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.389359"], ["updated_at", "2021-02-15 23:06:53.389359"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "horse back riding"], ["image", "🏇"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.397093"], ["updated_at", "2021-02-15 23:06:53.397093"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "cow"], ["image", "🐮"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.405168"], ["updated_at", "2021-02-15 23:06:53.405168"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "angry"], ["image", "🤦‍♂️"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.413491"], ["updated_at", "2021-02-15 23:06:53.413491"]]
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "ice cream"], ["image", " 🍦"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.421749"], ["updated_at", "2021-02-15 23:06:53.421749"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "present"], ["image", "🎁"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.426879"], ["updated_at", "2021-02-15 23:06:53.426879"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "lacross"], ["image", "🥍"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.431691"], ["updated_at", "2021-02-15 23:06:53.431691"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "eagle"], ["image", "🦅"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.436362"], ["updated_at", "2021-02-15 23:06:53.436362"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "embarrassed"], ["image", "🥳"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.447236"], ["updated_at", "2021-02-15 23:06:53.447236"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "popcorn"], ["image", "🍿"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.453551"], ["updated_at", "2021-02-15 23:06:53.453551"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "calendar"], ["image", "🗓"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.458460"], ["updated_at", "2021-02-15 23:06:53.458460"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "badminton"], ["image", "🏸"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.463099"], ["updated_at", "2021-02-15 23:06:53.463099"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "penguin"], ["image", "🐧"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.468458"], ["updated_at", "2021-02-15 23:06:53.468458"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "joy"], ["image", "🤩"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.473771"], ["updated_at", "2021-02-15 23:06:53.473771"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "cookie"], ["image", "🍪"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.478124"], ["updated_at", "2021-02-15 23:06:53.478124"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "telescope"], ["image", "🔭"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.482763"], ["updated_at", "2021-02-15 23:06:53.482763"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "kayaking"], ["image", "🚣‍♂️"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.487494"], ["updated_at", "2021-02-15 23:06:53.487494"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "snail"], ["image", "🐌"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.491956"], ["updated_at", "2021-02-15 23:06:53.491956"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.2ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "excited"], ["image", "🤫"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.497069"], ["updated_at", "2021-02-15 23:06:53.497069"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.5ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "carrot"], ["image", "🥕"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.514386"], ["updated_at", "2021-02-15 23:06:53.514386"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "pen"], ["image", "✒️"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.520751"], ["updated_at", "2021-02-15 23:06:53.520751"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "karate"], ["image", "🥋"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.526928"], ["updated_at", "2021-02-15 23:06:53.526928"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "snake"], ["image", "🐍"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.532808"], ["updated_at", "2021-02-15 23:06:53.532808"]]
+  [1m[36mTRANSACTION (9.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "quiet"], ["image", "😯"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.548026"], ["updated_at", "2021-02-15 23:06:53.548026"]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "watermelon"], ["image", "🍉"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.555307"], ["updated_at", "2021-02-15 23:06:53.555307"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "scissors"], ["image", "✂️"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.564051"], ["updated_at", "2021-02-15 23:06:53.564051"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "skateboard"], ["image", "🛹"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.575294"], ["updated_at", "2021-02-15 23:06:53.575294"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "octopus"], ["image", "🐙"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.582246"], ["updated_at", "2021-02-15 23:06:53.582246"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "curious"], ["image", "🤪"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.592031"], ["updated_at", "2021-02-15 23:06:53.592031"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.5ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "cherry"], ["image", "🍒"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.599635"], ["updated_at", "2021-02-15 23:06:53.599635"]]
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "car"], ["image", "🚗"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.614480"], ["updated_at", "2021-02-15 23:06:53.614480"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "surfing"], ["image", "🏄‍♂️"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.624203"], ["updated_at", "2021-02-15 23:06:53.624203"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "whale"], ["image", "🐳"], ["category_id", 1], ["created_at", "2021-02-15 23:06:53.633288"], ["updated_at", "2021-02-15 23:06:53.633288"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mWord Create (0.4ms)[0m  [1m[32mINSERT INTO "words" ("name", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "silly"], ["category_id", 2], ["created_at", "2021-02-15 23:06:53.641399"], ["updated_at", "2021-02-15 23:06:53.641399"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "bread"], ["image", "🥖"], ["category_id", 3], ["created_at", "2021-02-15 23:06:53.647557"], ["updated_at", "2021-02-15 23:06:53.647557"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mWord Create (0.5ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "taxi"], ["image", "🚕"], ["category_id", 4], ["created_at", "2021-02-15 23:06:53.655295"], ["updated_at", "2021-02-15 23:06:53.655295"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mWord Create (0.3ms)[0m  [1m[32mINSERT INTO "words" ("name", "image", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "ballet"], ["image", "\u{1FA70}"], ["category_id", 5], ["created_at", "2021-02-15 23:06:53.663639"], ["updated_at", "2021-02-15 23:06:53.663639"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "categories"[0m
+  [1m[36mWord Load (0.2ms)[0m  [1m[34mSELECT "words".* FROM "words" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "words"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mWord Load (0.3ms)[0m  [1m[34mSELECT "words".* FROM "words" WHERE "words"."category_id" = ? /* loading for inspect */ LIMIT ?[0m  [["category_id", 1], ["LIMIT", 11]]
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "words" WHERE "words"."category_id" = ?[0m  [["category_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "words"[0m
