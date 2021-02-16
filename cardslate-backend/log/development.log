@@ -777,3 +777,280 @@ Migrating to CreateWords (20210215205419)
   [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
   [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "words"[0m
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mWord Load (1.0ms)[0m  [1m[34mSELECT "words".* FROM "words" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for 127.0.0.1 at 2021-02-16 15:45:48 -0500
+  [1m[35m (7.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/kimberlycollins/.rvm/gems/ruby-2.6.1/gems/railties-6.1.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/kimberlycollins/.rvm/gems/ruby-2.6.1/gems/railties-6.1.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 36.2ms | Allocations: 480)
+Completed 200 OK in 221ms (Views: 48.7ms | ActiveRecord: 0.0ms | Allocations: 4153)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-02-16 15:45:49 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/users" for ::1 at 2021-02-16 15:56:56 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Dan", "user"=>{"name"=>"Dan"}}
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ app/controllers/users_controller.rb:5:in `create'
+Completed 500 Internal Server Error in 598521ms (ActiveRecord: 5.4ms | Allocations: 82226)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/users_controller.rb:5:in `create'
+Started GET "/" for 127.0.0.1 at 2021-02-16 16:13:59 -0500
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/kimberlycollins/.rvm/gems/ruby-2.6.1/gems/railties-6.1.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/kimberlycollins/.rvm/gems/ruby-2.6.1/gems/railties-6.1.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 24.5ms | Allocations: 315)
+Completed 200 OK in 110ms (Views: 32.5ms | ActiveRecord: 0.0ms | Allocations: 2450)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-16 16:14:05 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/kimberlycollins/.rvm/gems/ruby-2.6.1/gems/railties-6.1.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/kimberlycollins/.rvm/gems/ruby-2.6.1/gems/railties-6.1.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 34.8ms | Allocations: 191)
+Completed 200 OK in 43ms (Views: 36.8ms | ActiveRecord: 0.0ms | Allocations: 753)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-02-16 16:14:12 -0500
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for UsersController):
+  
+actionpack (6.1.2.1) lib/abstract_controller/base.rb:160:in `process'
+actionpack (6.1.2.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.2.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.2.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.2.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.2.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.2.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.2.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.2.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.2.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.2.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.2.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.2.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.2.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.1.2.1) lib/rails/engine.rb:539:in `call'
+puma (5.2.1) lib/puma/configuration.rb:247:in `call'
+puma (5.2.1) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.1) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.1) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.1) lib/puma/server.rb:431:in `process_client'
+puma (5.2.1) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2021-02-16 16:17:44 -0500
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 17ms (Allocations: 3318)
+
+
+  
+NoMethodError (undefined method `all' for UserSerializer:Class):
+  
+app/controllers/users_controller.rb:7:in `index'
+Started GET "/users" for 127.0.0.1 at 2021-02-16 16:18:00 -0500
+Processing by UsersController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+  [1m[36mUser Load (6.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 103ms (Views: 0.5ms | ActiveRecord: 6.6ms | Allocations: 2729)
+
+
+Started POST "/users" for ::1 at 2021-02-16 16:18:17 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Dan", "user"=>{"name"=>"Dan"}}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 1.5ms | Allocations: 2625)
+
+
+  
+ArgumentError (When assigning attributes, you must pass a hash as an argument, String passed.):
+  
+app/controllers/users_controller.rb:11:in `create'
+Started GET "/users" for 127.0.0.1 at 2021-02-16 16:18:25 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 520)
+
+
+Started POST "/users" for ::1 at 2021-02-16 16:22:57 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"ev", "user"=>{"name"=>"ev"}}
+Started POST "/users" for ::1 at 2021-02-16 16:36:36 -0500
+Completed 500 Internal Server Error in 819043ms (ActiveRecord: 3.3ms | Allocations: 309694)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/users_controller.rb:12:in `create'
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"ev", "user"=>{"name"=>"ev"}}
+Completed 500 Internal Server Error in 7452ms (ActiveRecord: 40.1ms | Allocations: 32336)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/users_controller.rb:12:in `create'
+Started POST "/users" for ::1 at 2021-02-16 16:37:14 -0500
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"daniel", "user"=>{"name"=>"daniel"}}
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 11.7ms | Allocations: 34670)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/users_controller.rb:12:in `create'
+Started POST "/users" for ::1 at 2021-02-16 16:39:33 -0500
+  [1m[35m (7.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"come on", "user"=>{"name"=>"come on"}}
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (15.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "come on"], ["created_at", "2021-02-16 21:39:34.220328"], ["updated_at", "2021-02-16 21:39:34.220328"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (15.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 200 OK in 86ms (Views: 1.0ms | ActiveRecord: 33.7ms | Allocations: 12025)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-02-16 16:39:51 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 14ms (Views: 0.4ms | ActiveRecord: 0.9ms | Allocations: 735)
+
+
+Started POST "/users" for ::1 at 2021-02-16 16:42:41 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"see", "user"=>{"name"=>"see"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (9.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "see"], ["created_at", "2021-02-16 21:42:42.120310"], ["updated_at", "2021-02-16 21:42:42.120310"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (15.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 200 OK in 115ms (Views: 0.2ms | ActiveRecord: 29.3ms | Allocations: 6030)
+
+
+Started POST "/users" for ::1 at 2021-02-16 16:43:23 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"create", "user"=>{"name"=>"create"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "create"], ["created_at", "2021-02-16 21:43:23.303980"], ["updated_at", "2021-02-16 21:43:23.303980"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 3.8ms | Allocations: 1761)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-02-16 16:44:26 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 785)
+
+
+Started POST "/users" for ::1 at 2021-02-16 16:45:49 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"foo", "user"=>{"name"=>"foo"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "foo"], ["created_at", "2021-02-16 21:45:49.688745"], ["updated_at", "2021-02-16 21:45:49.688745"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 3.7ms | Allocations: 1743)
+
+
+Started POST "/users" for ::1 at 2021-02-16 16:46:57 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"hshhs", "user"=>{"name"=>"hshhs"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "hshhs"], ["created_at", "2021-02-16 21:46:57.545480"], ["updated_at", "2021-02-16 21:46:57.545480"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 4.5ms | Allocations: 1744)
+
+
+Started POST "/users" for ::1 at 2021-02-16 16:48:13 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Melinda", "user"=>{"name"=>"Melinda"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Melinda"], ["created_at", "2021-02-16 21:48:13.210740"], ["updated_at", "2021-02-16 21:48:13.210740"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 2.5ms | Allocations: 1746)
+
+
+Started POST "/users" for ::1 at 2021-02-16 16:53:33 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"Melinda", "user"=>{"name"=>"Melinda"}}
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (22.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Melinda"], ["created_at", "2021-02-16 21:53:33.981643"], ["updated_at", "2021-02-16 21:53:33.981643"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (11.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 200 OK in 89ms (Views: 0.7ms | ActiveRecord: 37.8ms | Allocations: 2219)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-02-16 16:53:58 -0500
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1079)
+
+

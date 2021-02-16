@@ -24,7 +24,7 @@ const formEventListener = () => {
             
         }
         createUser(event)
-        
+        form.reset()
     })
 }
 
@@ -36,6 +36,26 @@ const createUser = (event) => {
     const newUser = {
          name: event.target[0].value
     }
+    let newObj = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(newUser)
+    } // closes newObj
+
+    fetch('http://localhost:3000/users', newObj)
+    .then(resp=> resp.json())
+    .then(user=>renderUser(user))
+}
+
+function renderUser(user){
+    debugger
+   const header = document.querySelector('header')
+   const h4 = document.createElement('h4')
+   h4.innerText = user.data.attributes.name
+   header.append(h4)
 
 }
 
@@ -58,3 +78,4 @@ const renderGame = (event) => {
 
 
 main()
+
