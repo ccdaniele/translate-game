@@ -2,13 +2,14 @@ class GamesController < ApplicationController
 
     def index
         games = Game.all
-        render json: GameSerializer.new(games).serializable_hash.to_json
-      end
+
+        render json: games
+    end
     
     def create
-        byebug
-      game = Game.create(language: params[:language], category_id: params[:category_id])
-      render json: GameSerializer.new(game).serializable_hash.to_json
+      game = Game.create(user_id: params[:user_id], language: params[:language], category_id: params[:category_id])
+      
+      render json: game
     end
 
 end

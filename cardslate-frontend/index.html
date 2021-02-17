@@ -12,10 +12,20 @@
 
     <main>
 
-      <div id="mainForm">
-        <form>
-          <label for="name">User Name:</label><br>
+      <div id="loginForm">
+
+        <form id="login">
+          <label for="name">User Login:</label><br>
           <input type="text" id="name" name="name"><br>
+          <input type="submit" value="Submit">
+        </form>
+
+      </div>
+
+
+      <div id="gameForm">
+
+        <form id="game">
           <label for="select-language">Language:</label>
           <br>
             <select id="language-dropdown" name="select-language">
@@ -26,15 +36,18 @@
             <label for="select-category">Language Category:</label>
             <br>
             <select id="category-dropdown" name="select-category">
-                <option value="Animals">Animals</option>
-                <option value="Foods">Foods</option>
-                <option value="Objects">Objects</option>
-                <option value="Sports">Sports</option>
-                <option value="Emotions">Emotions</option>
+                <option value="1">Animals</option>
+                <option value="2">Emotions</option>
+                <option value="3">Foods</option>
+                <option value="4">Objects</option>
+                <option value="5">Sports</option>
+                
             </select><br><br>
           <input type="submit" value="Submit">
         </form>
+
       </div>
+
 
       <div id="mainGame">
         <!-- game goes here  -->

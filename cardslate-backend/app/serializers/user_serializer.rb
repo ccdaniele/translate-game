@@ -1,4 +1,4 @@
-class UserSerializer
-  include JSONAPI::Serializer
-  attributes :name, :point
+class UserSerializer < ActiveModel::Serializer
+  attributes :id, :name, :point
+  has_many :games 
 end
