@@ -122,33 +122,118 @@ const fetchCategories = () => {
     // render words & images
 
 const renderGame = (game) => {
+
+    const gameDiv = document.getElementById('mainGame')
+    gameDiv.innerHTML = ""
     
     oneCategory = allCategories.find(category => category.id === game.category.id)
     
-    oneCategory.words.forEach(word => {
+    wordArray = oneCategory.words.map(word => word)
+    
+    finalWordArray = wordArray.sort(() => Math.random() - 0.5)
+
+    finalWordArray.slice(0,5).forEach(word => {
         
-        const gameDiv = document.getElementById('mainGame')
         const div = document.createElement('div')
-        div.className = "card"
-        
+        div.dataset.view = "cardShow"
+        div.dataset.id = word.id
+
         const p = document.createElement('p')
         p.innerText = word.name 
 
+        const imageDiv = document.createElement('div')
+        imageDiv.dataset.view = "cardShow"
+        imageDiv.dataset.id = word.id
+
+        const h1 = document.createElement('h1') 
+        h1.innerText = word.image
+
+        imageDiv.append(h1)
         div.append(p)
-        gameDiv.append(div)
+        gameDiv.append(div, imageDiv)
         
-    })
-    
-    
+    }) // closes forEach
+
+    // add timer then send to shuffleGame
+
+} // closes renderGame
 
 
+// reassign the div classes to card
+const shuffleGame = () => {
+
+    // finalWordArray.slice(0,5).forEach(word => {
+        
+    //     const div = document.createElement('div')
+    //     div.dataset.view = "cardShow"
+    //     div.dataset.id = word.id
+
+    //     const p = document.createElement('p')
+    //     p.innerText = word.name 
+
+    //     const imageDiv = document.createElement('div')
+    //     imageDiv.dataset.view = "cardShow"
+    //     imageDiv.dataset.id = word.id
+
+    //     const h1 = document.createElement('h1') 
+    //     h1.innerText = word.image
+
+    //     imageDiv.append(h1)
+    //     div.append(p)
+    //     gameDiv.append(div, imageDiv)
+        
+    // }) // closes forEach
 
 
-    debugger
-    console.log(game)
-    
+    div.onclick = function() {
+   
+        if (this.className != 'flipped' && this.className != 'correct'){
+            this.className = 'flipped';
+            p.innerText = word.name 
+            // var result = this.dataset.item;
+            // resultsArray.push(result);
+            // clearInterval(Interval);
+            // Interval = setInterval(startTimer, 10);
+        } else {
+            this.className = 'reverse'
+            p.innerText = ""
+        }
+    } // closes onclick
+
+    imageDiv.onclick = function() {
+
+        if (this.className != 'flipped' && this.className != 'correct'){
+            this.className = 'flipped';
+            h1.innerText = word.image 
+            // var result = this.dataset.item;
+            // resultsArray.push(result);
+            // clearInterval(Interval);
+            // Interval = setInterval(startTimer, 10);
+        } else {
+            this.className = 'reverse'
+            h1.innerText = ""
+        }
+
+        if (div.className && imageDiv.className === 'flipped') {
+            console.log("this works")
+            div.className = 'correct'
+            imageDiv.className = 'correct'
+            // udpate user's points
+        }
+    } // closes onclick
+
 
 }
+
+
+
+
+
+
+
+
+
+
 
 
 main()
