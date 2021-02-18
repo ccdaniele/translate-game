@@ -1,4 +1,4 @@
 class WordSerializer < ActiveModel::Serializer
-  attributes :id, :name, :image
+  attributes :id, :name 
   belongs_to :category 
 end

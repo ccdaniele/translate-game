@@ -4,7 +4,6 @@ const GAME_URL = `${BASE_URL}/games`
 const CATEGORY_URL = `${BASE_URL}/categories`
 const WORD_URL = `${BASE_URL}/words`
 
-
 const main =() => {
     createUser()
     createGame()
@@ -128,39 +127,115 @@ const renderGame = (game) => {
     
     oneCategory = allCategories.find(category => category.id === game.category.id)
     
-    wordArray = oneCategory.words.map(word => word)
+  
+    imageArray = oneCategory.images
+    wordArray = oneCategory.words
+    debugger
+
+
+    // wordArray =  wordCategory.map(word => word)
+
+    // wordArray.sort(() => Math.random() - 0.5)
+
+    // mainArray = wordArray.slice(0,5)
+
+    // totalArray = shuffle(mainArray)
     
-    finalWordArray = wordArray.sort(() => Math.random() - 0.5)
 
-    finalWordArray.slice(0,5).forEach(word => {
+    // totalArray.forEach()(word => {
+
+    // const div = document.createElement('div')
+    //     div.dataset.view = "cardShow"
+    //     div.dataset.id = word.id
+
+    //     const p = document.createElement('p')
+    //     p.innerText = word.name 
+
+    //     const imageDiv = document.createElement('div')
+    //     imageDiv.dataset.view = "cardShow"
+    //     imageDiv.dataset.id = word.id
+
+    //     const h1 = document.createElement('h1') 
+    //     h1.innerText = word.image
+
+    //     imageDiv.append(h1)
+    //     div.append(p)
+    //     gameDiv.append(div, imageDiv)
+
+
+    // })
+
+
+
+}
+
+
+//     stringArray.forEach(string => {
         
-        const div = document.createElement('div')
-        div.dataset.view = "cardShow"
-        div.dataset.id = word.id
+//             const div = document.createElement('div')
+//             div.dataset.view = "cardShow"
+//             div.dataset.id = string.id
+    
+//             const p = document.createElement('p')
+//             p.innerText = string.name 
+//             div.append(p)
+//             gameDiv.append(div)
+//     })
 
-        const p = document.createElement('p')
-        p.innerText = word.name 
+//     imageArray.forEach(image => {
 
-        const imageDiv = document.createElement('div')
-        imageDiv.dataset.view = "cardShow"
-        imageDiv.dataset.id = word.id
+    
+//             const imageDiv = document.createElement('div')
+//             imageDiv.dataset.view = "cardShow"
+//             imageDiv.dataset.id = image.id
+    
+//             const h1 = document.createElement('h1') 
+//             h1.innerText = image.image
+    
+//             imageDiv.append(h1)
+//             gameDiv.append(imageDiv)
+ 
 
-        const h1 = document.createElement('h1') 
-        h1.innerText = word.image
+    
 
-        imageDiv.append(h1)
-        div.append(p)
-        gameDiv.append(div, imageDiv)
+
+     // --------- james amazing work -------
+    
+    // finalWordArray = wordArray.sort(() => Math.random() - 0.5)
+
+    // finalWordArray.slice(0,5).forEach(word => {
         
-    }) // closes forEach
+    //     const div = document.createElement('div')
+    //     div.dataset.view = "cardShow"
+    //     div.dataset.id = word.id
+
+    //     const p = document.createElement('p')
+    //     p.innerText = word.name 
+
+    //     const imageDiv = document.createElement('div')
+    //     imageDiv.dataset.view = "cardShow"
+    //     imageDiv.dataset.id = word.id
+
+    //     const h1 = document.createElement('h1') 
+    //     h1.innerText = word.image
+
+    //     imageDiv.append(h1)
+    //     div.append(p)
+    //     gameDiv.append(div, imageDiv)
+
+    // --------- james amazing work -------
+        
+    // }) // closes forEach
 
     // add timer then send to shuffleGame
 
-} // closes renderGame
+// } // closes renderGame
 
 
 // reassign the div classes to card
 const shuffleGame = () => {
+
+
 
     // finalWordArray.slice(0,5).forEach(word => {
         

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :words
+  resources :images
   resources :categories
   resources :games
   resources :users
