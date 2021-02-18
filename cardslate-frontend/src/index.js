@@ -10,10 +10,8 @@ const main =() => {
     fetchCategories()
 }
 
-// scape the form data - x
-    // fetch POST a new user - x 
-    // display form information in header - x
-    // hide form
+
+// TO DO: hide form after submit
 const createUser = () => {
 
     const formLogin = document.getElementById('login')
@@ -51,17 +49,15 @@ const renderUser = (user) => {
     const h4 = document.createElement('h4')
 
     h4.dataset.id = user.id 
-    h4.innerText = `Welcome ${user.name} ` + `Your Points: ${user.point}`
+    h4.innerText = `Hello ${user.name} ` + `Your Points: ${user.point}`
 
     header.append(h4)
     
 }
 
-// create the game
-    // fetch POST for game
-// event list for form - x
-    // hide the form 
-    // let showCards = false;
+
+// TO DO: hide the form after submit
+// let showCards = false;
 const createGame = () => {
 
     const formGame = document.getElementById('game')
@@ -81,11 +77,11 @@ const createGame = () => {
         
         const gameType = {
             user_id: userId,
-            // integer 
+
             language: event.target[0].value, 
-            //string of name
+
             category_id: parseInt(event.target[1].value, 10) 
-            //category_id as integer
+
         }
     
         let gameObj = {
@@ -99,211 +95,177 @@ const createGame = () => {
         
         fetch('http://localhost:3000/games', gameObj)
         .then(resp => resp.json())
-        .then(game => renderGame(game))
-        
+        .then(game => shuffleDeck(game))
+
+        formGame.reset()
     })
-    formGame.reset()
+    
 }
+
 
 const fetchCategories = () => {
 
     fetch(CATEGORY_URL)
     .then(resp => resp.json())
     .then(categories => {
+        
         allCategories = categories
-        // categories.forEach(category => category)
+        
         })
 
 }
 
-// render game 0 cards - 5 words
-    // render divs for each card
-    // render words & images
+// // Fisher-Yates (aka Knuth) Shuffle
+const shuffle = (array) => {
+    let d = array
+   let w = d.map((a) => ({sort: Math.random(), value: a}))
+    let t= w.sort((a, b) => a.sort - b.sort)
+  let x = t.map((a) => a.value)
+  return x
+}
 
-const renderGame = (game) => {
+const getMatch = (a, b) => {
+    var matches = [];
+
+    for ( var i = 0; i < a.length; i++ ) {
+        for ( var e = 0; e < b.length; e++ ) {
+            if ( a[i].id === b[e].id ) matches.push( a[i] );
+        }
+    }
+    return matches;
+}
+
+
+const shuffleDeck = (game) => {
+
+    // match the user category selection to category api by id
+    oneCategory = allCategories.find(category => category.id === game.category.id)
+
+    // two seprate arrays 
+    imageArray = oneCategory.images
+    wordArray = oneCategory.words
+
+    // shuffle only word array
+    shuffledWordArray = shuffle(wordArray)
+
+    // slice shuffled word array to 5 words
+    slicedWordArray = shuffledWordArray.slice(0,5)
+
+    // match the image array ids to the sliced word array ids
+    matchImageArray = getMatch(imageArray, slicedWordArray)
+
+    // merge 5 image array & 5 word array to one new array
+    matchedArray = matchImageArray.concat(slicedWordArray)
+    
+    // shuffle merged array 
+    shuffleMatchedArray = shuffle(matchedArray)
+
+    // render shuffled deck
+    renderGame(shuffleMatchedArray)
+
+}
+
+
+const renderGame = (shuffleMatchedArray) => {
 
     const gameDiv = document.getElementById('mainGame')
     gameDiv.innerHTML = ""
     
-    oneCategory = allCategories.find(category => category.id === game.category.id)
+    let container = []
+
+    const cardCheck = (result) => {
+        container.push(result)
+
+        if (container.length === 2) {
+            if (container[0] === container[1]) {
+                console.log('true')
+                container = []
+            } else { 
+                console.log ('false')
+                div.className = 'reversed'
+                container = []
+            }
+        } 
     
-  
-    imageArray = oneCategory.images
-    wordArray = oneCategory.words
-    debugger
-
-
-    // wordArray =  wordCategory.map(word => word)
-
-    // wordArray.sort(() => Math.random() - 0.5)
-
-    // mainArray = wordArray.slice(0,5)
-
-    // totalArray = shuffle(mainArray)
+    }
     
+    shuffleMatchedArray.forEach(card => {
 
-    // totalArray.forEach()(word => {
+        const div = document.createElement('div')
+        const p = document.createElement('p')
+        const h1 = document.createElement('h1')
 
-    // const div = document.createElement('div')
-    //     div.dataset.view = "cardShow"
-    //     div.dataset.id = word.id
+        div.dataset.view = "card"
+        div.dataset.id = card.id
 
-    //     const p = document.createElement('p')
-    //     p.innerText = word.name 
+        div.onclick = function() {
 
-    //     const imageDiv = document.createElement('div')
-    //     imageDiv.dataset.view = "cardShow"
-    //     imageDiv.dataset.id = word.id
+            clock()
 
-    //     const h1 = document.createElement('h1') 
-    //     h1.innerText = word.image
+            if (this.className != 'flipped' && this.className != 'correct'){
+                this.className = 'flipped';
+                if (card.name) {
+                    p.innerText = card.name 
+                } else {
+                    h1.innerText = card.image 
+                } 
+                let result = this.dataset.id 
+                cardCheck(result)
+    
+                
+                // clearInterval(Interval);
+                // Interval = setInterval(startTimer, 10);
+            } 
+            
+            // else {
+            //     this.className = 'reverse'
+            //     p.innerText = ""
+            //     h1.innerText = ""
+            // }
+            
+                
+            // if (this.className === 'flipped' && this.dataset.id === this.dataset.id) {
+            //     console.log("this works")
+            //     this.className = 'correct'
+            //     // udpate user's points
+            // }
+        } // closes onclick
 
-    //     imageDiv.append(h1)
-    //     div.append(p)
-    //     gameDiv.append(div, imageDiv)
+        div.append(p, h1)
+        gameDiv.append(div)
 
+    })
 
-    // })
-
-
+    
 
 }
 
 
-//     stringArray.forEach(string => {
-        
-//             const div = document.createElement('div')
-//             div.dataset.view = "cardShow"
-//             div.dataset.id = string.id
-    
-//             const p = document.createElement('p')
-//             p.innerText = string.name 
-//             div.append(p)
-//             gameDiv.append(div)
-//     })
+function clock(){
+    var minutesLabel = document.getElementById("minutes");
+    var secondsLabel = document.getElementById("seconds");
+    var totalSeconds = 0;
+    setInterval(setTime, 1000);
 
-//     imageArray.forEach(image => {
+    function setTime(){
+        ++totalSeconds;
+        secondsLabel.innerHTML = pad(totalSeconds%60);
+        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+    }
 
-    
-//             const imageDiv = document.createElement('div')
-//             imageDiv.dataset.view = "cardShow"
-//             imageDiv.dataset.id = image.id
-    
-//             const h1 = document.createElement('h1') 
-//             h1.innerText = image.image
-    
-//             imageDiv.append(h1)
-//             gameDiv.append(imageDiv)
- 
-
-    
-
-
-     // --------- james amazing work -------
-    
-    // finalWordArray = wordArray.sort(() => Math.random() - 0.5)
-
-    // finalWordArray.slice(0,5).forEach(word => {
-        
-    //     const div = document.createElement('div')
-    //     div.dataset.view = "cardShow"
-    //     div.dataset.id = word.id
-
-    //     const p = document.createElement('p')
-    //     p.innerText = word.name 
-
-    //     const imageDiv = document.createElement('div')
-    //     imageDiv.dataset.view = "cardShow"
-    //     imageDiv.dataset.id = word.id
-
-    //     const h1 = document.createElement('h1') 
-    //     h1.innerText = word.image
-
-    //     imageDiv.append(h1)
-    //     div.append(p)
-    //     gameDiv.append(div, imageDiv)
-
-    // --------- james amazing work -------
-        
-    // }) // closes forEach
-
-    // add timer then send to shuffleGame
-
-// } // closes renderGame
-
-
-// reassign the div classes to card
-const shuffleGame = () => {
-
-
-
-    // finalWordArray.slice(0,5).forEach(word => {
-        
-    //     const div = document.createElement('div')
-    //     div.dataset.view = "cardShow"
-    //     div.dataset.id = word.id
-
-    //     const p = document.createElement('p')
-    //     p.innerText = word.name 
-
-    //     const imageDiv = document.createElement('div')
-    //     imageDiv.dataset.view = "cardShow"
-    //     imageDiv.dataset.id = word.id
-
-    //     const h1 = document.createElement('h1') 
-    //     h1.innerText = word.image
-
-    //     imageDiv.append(h1)
-    //     div.append(p)
-    //     gameDiv.append(div, imageDiv)
-        
-    // }) // closes forEach
-
-
-    div.onclick = function() {
-   
-        if (this.className != 'flipped' && this.className != 'correct'){
-            this.className = 'flipped';
-            p.innerText = word.name 
-            // var result = this.dataset.item;
-            // resultsArray.push(result);
-            // clearInterval(Interval);
-            // Interval = setInterval(startTimer, 10);
-        } else {
-            this.className = 'reverse'
-            p.innerText = ""
+    function pad(val){
+        var valString = val + "";
+        if(valString.length < 2)
+        {
+            return "0" + valString;
         }
-    } // closes onclick
-
-    imageDiv.onclick = function() {
-
-        if (this.className != 'flipped' && this.className != 'correct'){
-            this.className = 'flipped';
-            h1.innerText = word.image 
-            // var result = this.dataset.item;
-            // resultsArray.push(result);
-            // clearInterval(Interval);
-            // Interval = setInterval(startTimer, 10);
-        } else {
-            this.className = 'reverse'
-            h1.innerText = ""
+        else
+        {
+            return valString;
         }
-
-        if (div.className && imageDiv.className === 'flipped') {
-            console.log("this works")
-            div.className = 'correct'
-            imageDiv.className = 'correct'
-            // udpate user's points
-        }
-    } // closes onclick
-
-
+    }
+    
 }
-
-
-
-
-
 
 
 

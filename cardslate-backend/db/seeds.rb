@@ -5,14 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
 Category.destroy_all
 Word.destroy_all
+Image.destroy_all
+Game.destroy_all
 
-category_1 = Category.create(name: "Animals", image:"animal_image")
-category_2 = Category.create(name: "Emotions", image:"emotions_image")
-category_3 = Category.create(name: "Foods", image:"foods_emoji")
-category_4 = Category.create(name: "Objects", image:"objects_emoji")
-category_5 = Category.create(name: "Sports", image:"sports_emoji")
+category_1 = Category.create(name: "Animals")
+category_2 = Category.create(name: "Emotions")
+category_3 = Category.create(name: "Foods")
+category_4 = Category.create(name: "Objects")
+category_5 = Category.create(name: "Sports")
 
 animals = ["dog", "cat", "mouse", "bear", "tiger", "pig", "frog", "monkey", "bunny", 
     "horse", "butterfly", "bee", "chicken", "cow", "eagle", "penguin", "snail", 
@@ -50,11 +53,11 @@ end
 
 i=0
 while i < 20 do 
-    Image.create( image: animal_image[i], category_id: 1)
-    Image.create( image: emotions_image[i], category_id: 2)
-    Image.create( image: foods_emoji[i], category_id: 3)
-    Image.create( image: objects_emoji[i], category_id: 4)
-    Image.create( image: sports_emoji[i], category_id: 5)
+    Image.create(image: animal_image[i], category_id: 1)
+    Image.create(image: emotions_image[i], category_id: 2)
+    Image.create(image: foods_emoji[i], category_id: 3)
+    Image.create(image: objects_emoji[i], category_id: 4)
+    Image.create(image: sports_emoji[i], category_id: 5)
     i +=1
 end
 
