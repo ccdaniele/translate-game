@@ -1,3 +1,4 @@
+
 const BASE_URL = "http://localhost:3000"
 const USER_URL = `${BASE_URL}/users`
 const GAME_URL = `${BASE_URL}/games`
@@ -151,6 +152,8 @@ const shuffleDeck = (game) => {
     // slice shuffled word array to 5 words
     slicedWordArray = shuffledWordArray.slice(0,5)
 
+    debugger
+
     // match the image array ids to the sliced word array ids
     matchImageArray = getMatch(imageArray, slicedWordArray)
 
@@ -165,29 +168,16 @@ const shuffleDeck = (game) => {
 
 }
 
+// ------- cards --------
 
 const renderGame = (shuffleMatchedArray) => {
 
     const gameDiv = document.getElementById('mainGame')
     gameDiv.innerHTML = ""
     
-    let container = []
+   
 
-    const cardCheck = (result) => {
-        container.push(result)
-
-        if (container.length === 2) {
-            if (container[0] === container[1]) {
-                console.log('true')
-                container = []
-            } else { 
-                console.log ('false')
-                div.className = 'reversed'
-                container = []
-            }
-        } 
-    
-    }
+   
     
     shuffleMatchedArray.forEach(card => {
 
@@ -197,49 +187,49 @@ const renderGame = (shuffleMatchedArray) => {
 
         div.dataset.view = "card"
         div.dataset.id = card.id
+        div.dataset.look = "visible"
 
+// ------ starts click actions -----
+        
         div.onclick = function() {
-
-            clock()
-
-            if (this.className != 'flipped' && this.className != 'correct'){
-                this.className = 'flipped';
-                if (card.name) {
-                    p.innerText = card.name 
-                } else {
-                    h1.innerText = card.image 
-                } 
-                let result = this.dataset.id 
-                cardCheck(result)
-    
-                
-                // clearInterval(Interval);
-                // Interval = setInterval(startTimer, 10);
-            } 
             
-            // else {
-            //     this.className = 'reverse'
-            //     p.innerText = ""
-            //     h1.innerText = ""
-            // }
+
+            (this.className === 'flipped')? reverse(this,card, p, h1) : flip(this,card, p, h1) 
+
+           
             
                 
-            // if (this.className === 'flipped' && this.dataset.id === this.dataset.id) {
-            //     console.log("this works")
-            //     this.className = 'correct'
-            //     // udpate user's points
-            // }
         } // closes onclick
 
         div.append(p, h1)
         gameDiv.append(div)
 
-    })
+    }) // closes forEach
 
-    
+ 
 
+} // finish rendercards
+
+function flip(element,card, p, h1){
+        element.className = 'flipped'
+        if (card.name) {
+            p.innerText = card.name 
+        }   else {
+            h1.innerText = card.image
+            }
+            // debugger
+            checkPartner(element,card, p, h1)
+    }
+
+function reverse(element,card, p, h1){
+
+    element.className = 'reverse'
+    if (card.name) {
+        p.innerText = ''
+    }   else {
+        h1.innerText = ''
+        }
 }
-
 
 function clock(){
     var minutesLabel = document.getElementById("minutes");
@@ -267,6 +257,37 @@ function clock(){
     
 }
 
+let container = []
+
+
+function checkPartner(element,card, p, h1){
+    container.push(element)
+    if (container.length === 2) {
+        if (container[0].dataset.id === container[1].dataset.id) {
+            container.forEach(element => element.className = 'correct')
+            setTimeout(function() {
+                container[0].dataset.look = 'done';
+                container[1].dataset.look = 'done';
+                container = []
+                }, 1000)
+            console.log('partners')
+        } else {
+            setTimeout(function() {
+            container[0].firstElementChild.innerHTML = " ";
+            container[0].lastElementChild.innerHTML = " "
+            container[0].className = 'reverse';
+            container[1].lastElementChild.innerHTML = " "
+            container[1].firstElementChild.innerHTML = " ";
+            container[1].className = 'reverse';
+            container = []
+            }, 1000)
+
+           
+            
+        }
+     }
+
+}
 
 
 
@@ -274,4 +295,10 @@ function clock(){
 
 
 main()
+
+
+
+
+
+
 

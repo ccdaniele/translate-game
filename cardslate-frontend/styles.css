@@ -105,6 +105,11 @@ body {
     transform-style: preserve-3d;
     position: relative;
     transform: rotateY(180deg);
+    
+  }
+
+  [data-look="done"] {
+    display:none;
   }
   
   .correct {
