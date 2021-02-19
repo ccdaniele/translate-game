@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Cardslate</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
   </head>
   <body>
     <header>
@@ -11,23 +12,33 @@
     </header>
 
     <main>
-      <label id="minutes">00</label>
-      <label id="colon">:</label>
-      <label id="seconds">00</label>
-      
+
+      <div id="mainDiv">
+
+        <div class="timer">
+        <label>Timer</label>
+        <label id="minutes">00</label>
+        <label id="colon">:</label>
+        <label id="seconds">00</label>
+      </div>
 
       <div id="loginForm">
-
+        <p>Welcome to Cardslate!</p>
+        <p>Cardslate is a memory card game that helps you to learn a new lanuage!</p>
+        <p>Object of the game is to collect pairs and finish the puzzle for points.</p>
+        <p>The faster your finish the more points you can earn. Have fun!</p>
+        
         <form id="login">
           <label for="name">User Login:</label><br>
           <input type="text" id="name" name="name"><br>
-          <input type="submit" value="Submit">
+          <input type="submit" value="SUBMIT">
         </form>
 
       </div>
 
+      <div class="clearer"></div>
 
-      <div id="gameForm">
+      <div id="gameForm" style="display:none;">
 
         <form id="game">
           <label for="select-language">Language:</label>
@@ -47,16 +58,18 @@
                 <option value="5">Sports</option>
                 
             </select><br><br>
-          <input type="submit" value="Submit">
+          <input type="submit" value="START GAME">
         </form>
 
       </div>
 
 
-      <div id="mainGame">
+      <div id="mainGame" style="display:none;">
         <!-- game goes here  -->
       </div>
 
+    </div>
+    
     </main>
     <script src="./src/index.js" defer></script>
   </body>

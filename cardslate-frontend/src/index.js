@@ -4,20 +4,34 @@ const GAME_URL = `${BASE_URL}/games`
 const CATEGORY_URL = `${BASE_URL}/categories`
 const WORD_URL = `${BASE_URL}/words`
 
+
+
 const main =() => {
     createUser()
-    createGame()
     fetchCategories()
 }
 
 
-// TO DO: hide form after submit
+
+let showLogin = false;
 const createUser = () => {
 
     const formLogin = document.getElementById('login')
     formLogin.addEventListener('submit', function(event){
 
     event.preventDefault()
+
+    const div = document.getElementById('loginForm')
+        
+    showLogin = !showLogin
+    if (showLogin) {
+        div.style.display = "none"
+        
+    } else {
+        div.style.display = "block"
+    }
+
+    createGame()
 
     const newUser = {
         name: event.target[0].value,
@@ -49,31 +63,33 @@ const renderUser = (user) => {
     const h4 = document.createElement('h4')
 
     h4.dataset.id = user.id 
-    h4.innerText = `Hello ${user.name} ` + `Your Points: ${user.point}`
+    h4.innerText = `Hello ${user.name}, ` + `you have ${user.point} points.`
 
     header.append(h4)
     
 }
 
 
-// TO DO: hide the form after submit
-// let showCards = false;
+
 const createGame = () => {
+
+    const div = document.getElementById('gameForm')
+    if (div.style.display === "none") {
+        div.style.display = "block";
+    } else {
+        div.style.display = "none";
+    }
 
     const formGame = document.getElementById('game')
     formGame.addEventListener('submit', function(event){
         event.preventDefault()
 
-        // const div = document.getElementById('mainForm')
-        
-        // showCards = !showCards
-        // if (showCards) {
-        //     div.style.display = "none"
-            
-        // } else {
-        //     div.style.display = "block"
-            
-        // }
+        if (div.style.display === "block") {
+            div.style.display = "none";
+        } else {
+            div.style.display = "block";
+        }
+
         
         const gameType = {
             user_id: userId,
@@ -168,26 +184,24 @@ const shuffleDeck = (game) => {
 
 const renderGame = (shuffleMatchedArray) => {
 
+    const mainDiv = document.getElementById('mainDiv')
+    const h3 = document.createElement('h3')
+    h3.innerText = "Click on any card to begin"
+
+    mainDiv.append(h3)
+
+
     const gameDiv = document.getElementById('mainGame')
+
+    if (gameDiv.style.display === "none") {
+        gameDiv.style.display = "block";
+    } else {
+        gameDiv.style.display = "none";
+    }
+
     gameDiv.innerHTML = ""
     
-    let container = []
-
-    const cardCheck = (result) => {
-        container.push(result)
-
-        if (container.length === 2) {
-            if (container[0] === container[1]) {
-                console.log('true')
-                container = []
-            } else { 
-                console.log ('false')
-                div.className = 'reversed'
-                container = []
-            }
-        } 
-    
-    }
+    // let container = []
     
     shuffleMatchedArray.forEach(card => {
 
@@ -200,22 +214,68 @@ const renderGame = (shuffleMatchedArray) => {
 
         div.onclick = function() {
 
-            clock()
+            if (card.name) {
+                p.innerText = card.name 
+            } else {
+                h1.innerText = card.image 
+            } 
 
             if (this.className != 'flipped' && this.className != 'correct'){
                 this.className = 'flipped';
-                if (card.name) {
-                    p.innerText = card.name 
-                } else {
-                    h1.innerText = card.image 
-                } 
-                let result = this.dataset.id 
-                cardCheck(result)
-    
-                
-                // clearInterval(Interval);
-                // Interval = setInterval(startTimer, 10);
             } 
+            else {
+                this.className = "reversed"
+            }
+
+            // look into css html hidden attribute
+            // try to hide something  
+                
+            
+            
+            // let result = this
+            // container.push(result) 
+            // const check = function(className) {
+            //     let x = document.getElementsByClassName("flipped");
+                
+            //     setTimeout(function() {
+
+            //       for(let i = (x.length - 1); i >= 0; i--) {
+            //           debugger
+            //         x[i].className = className;
+            //         if (className === 'reversed'){
+            //             p.innerText = ""
+            //             h1.innerText = ""
+            //         }
+                        
+                    
+            //       }
+                   
+            //     }, 500);
+                 
+            //   }
+            
+            // if (container.length === 2) {
+            //     // debugger
+            //     if (container[0].dataset.id === container[1].dataset.id) {
+                    
+            //             container[0].className = "correct"
+            //             container[1].className = "correct"
+            //             debugger
+            //             // check("correct")
+            //             container = []
+            //         } else { 
+            //             container[0].className = "reversed"
+            //             container[1].className = "reversed"
+            //             container[0].innerText = ""
+            //             container[1].innerText = ""
+
+            //             // set timeout here
+            //             // check("reversed")
+            //             container = []
+            //         }
+            // } 
+
+            
             
             // else {
             //     this.className = 'reverse'
@@ -264,7 +324,7 @@ function clock(){
             return valString;
         }
     }
-    
+
 }
 
 
