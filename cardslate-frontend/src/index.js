@@ -1,15 +1,15 @@
-
 const BASE_URL = "http://localhost:3000"
 const USER_URL = `${BASE_URL}/users`
 const GAME_URL = `${BASE_URL}/games`
 const CATEGORY_URL = `${BASE_URL}/categories`
 const WORD_URL = `${BASE_URL}/words`
 
-
+points = 0
 
 const main =() => {
     createUser()
     fetchCategories()
+    
 }
 
 
@@ -33,6 +33,8 @@ const createUser = () => {
     }
 
     createGame()
+
+
 
     const newUser = {
         name: event.target[0].value,
@@ -73,7 +75,6 @@ const renderUser = (user) => {
 
 
 const createGame = () => {
-
     const div = document.getElementById('gameForm')
     if (div.style.display === "none") {
         div.style.display = "block";
@@ -84,6 +85,7 @@ const createGame = () => {
     const formGame = document.getElementById('game')
     formGame.addEventListener('submit', function(event){
         event.preventDefault()
+        clock()
 
         if (div.style.display === "block") {
             div.style.display = "none";
@@ -168,7 +170,7 @@ const shuffleDeck = (game) => {
     // slice shuffled word array to 5 words
     slicedWordArray = shuffledWordArray.slice(0,5)
 
-    debugger
+    // debugger
 
     // match the image array ids to the sliced word array ids
     matchImageArray = getMatch(imageArray, slicedWordArray)
@@ -205,9 +207,7 @@ const renderGame = (shuffleMatchedArray) => {
 
     gameDiv.innerHTML = ""
     
-   
 
-   
     
     shuffleMatchedArray.forEach(card => {
 
@@ -247,7 +247,8 @@ function flip(element,card, p, h1){
         }   else {
             h1.innerText = card.image
             }
-            // debugger
+            // debugger -------- INSERT GOOGLE TRANSLATOR------
+
             checkPartner(element,card, p, h1)
     }
 
@@ -295,6 +296,7 @@ function checkPartner(element,card, p, h1){
     if (container.length === 2) {
         if (container[0].dataset.id === container[1].dataset.id) {
             container.forEach(element => element.className = 'correct')
+            pointsUpdated()
             setTimeout(function() {
                 container[0].dataset.look = 'done';
                 container[1].dataset.look = 'done';
@@ -320,7 +322,15 @@ function checkPartner(element,card, p, h1){
 }
 
 
+function pointsUpdated(){
+    points += 2
+    h4 = document.querySelector('h4')
 
+    h4.innerText = `now you have ${points}`
+
+    // *Promise* when game finish Fetch to data base
+
+}
 
 
 
