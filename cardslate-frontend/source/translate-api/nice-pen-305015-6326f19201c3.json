@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "nice-pen-305015",
+  "private_key_id": "6326f19201c33cab091df94a4b238cba32db1c16",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDQdN2fTiuxa95v\naANvJKn+AqiNX5a4A3LlC0fSjE6u4VVclx/nfI1O0TnMsVXnBbXnc0fRxa4P4PlL\ndiHG1aEG7rKiNpLnNC0UOtei303ppkS0ZdDuLLuKFK3pg1vyhbPBHqCrrYAUyFq1\nJhM6zJdxh9H0t6LNIAEy0tlJDdTsZgmWjpLEP3ReVHIihlY74MgkQVfmgfNA/Kul\n4CdLCjCWqBrSl5BXJdo2u39lD2/La2JLYz/uXdoqhCOOr+bdc7LiDFVC7OSRlhFJ\nwkssZ0JY5pFHiWlpxRzHIzX1PhXkfEbiSJOZeVJeXSZmyRAoPPWmPNpeO0nYh+u+\nbxErHELnAgMBAAECggEAFDsIoy76oz5nw6zMNdt7ZVEsEIRdY+sZxHbYIpacBZw4\nJO3vGmUxGvFynZX8U0PE8qXH1j5MH/MNNAX5TeBqafon0KxhN2+4jEUQVm3mPth0\nby7jxv8FDb08tPPwVtTOVt4PvnmZJkCHj8XBNKypv0qXgBuDq6ABMxsuxp3sCIEg\nZ8vrFawH712kANy2vGGh4m6JmOdQQwcZkpIaNgpVsXcjrF7MLApE1Zu5xJBCUHJ7\nuHIC3DXHs+kaIbXVhOGxJufW3nH3q+NLfMlKx1S5dpRk2ev6Mt/t6xJukJBMDpW+\nmK58x7+MrpzzRx65oOpYNnEoVbSqRU88kZ9oGhH7aQKBgQDxaHZoh6DUOVUEMDdE\n2str6GoNW63Ma/UOlCRy2SsSUpfa2GQc75l5ELdWNVoiPy8j10yJcv9c9Sxpohqw\nP1D6ZMs5E+3hu23wMwbgM+rfjvMJL3cRy+0pkXmj3Iu0gzYMFb8O9+cB/XZbz9h1\nstGQMoiIGQccRXkWDvVXICnuEwKBgQDdDoMqj9ZjCxSuBE/O/ZlJjjAUkD05FAhM\n60SP01IDq0UUFb1PaiInHRyrzDJxhAvG4Axv2T7NiCumwnFsHuYJWmzsiykbeZx2\nQN5mE0xxkzRQ31qIEcifkjjYuJYuSATiU7EGQ+JkoYDYB7SPr7A7K/p1VUbazyS1\nXuyED/ziXQKBgQCEenxIfu2uqUvTgZZDDgMGU8QnUoF9Jl2UQ44BDNaLNpIpQgkm\nrAJAIwFJqPuuwZfgBl31LAuhetaFnbUhtY196+RujVZFQ3NgltAWJ8ekKbGL/+VK\n+etLnY7wcq6kQEFfvmtcDoVSXUMfvV8fsCM7C9BLR9jUFfgON+VBi+AWywKBgDqu\n/Zcw9CL68BR6RI2YuTbTrmPnHrmmXcW9t0fPO7iJoR8B3m3UqRhlHBVncgS8nzu+\ngs62h3ucqKnueJnRYhQdk0kAcHtAv46NDf1fJi4IfBz0Dl6NCguCj+DIr+W9bL6A\npUAaiWFZlpDDCuYSJ+CtfiHj75lq4D3d4z/z1phpAoGAH7RGcCPkxtFCgRNcACZt\nWYftgbgwRNeDx8KpvzhlRDqcgdFsiCsW+/zF+rptv5X65g4ZKarIFA6P95Xbw3hW\nPXHDPURjTxpNfJt1sd7dpKrQSKGa61k9eLLwzdBBQccKE0BVcaoEyEYqfWS0wfYD\nX0lnjZeqHTqZwAMyWDO3W4k=\n-----END PRIVATE KEY-----\n",
+  "client_email": "cardslate@nice-pen-305015.iam.gserviceaccount.com",
+  "client_id": "104767939303173959281",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cardslate%40nice-pen-305015.iam.gserviceaccount.com"
+}
