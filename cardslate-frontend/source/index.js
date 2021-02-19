@@ -13,16 +13,8 @@ const main =() => {
     createUser()
     fetchCategories()
     hello()
-
-//     translateText('amanecer', 'en')
-//     .then((newText) => {
-//         console.log(newText);
-// })
     
 }
-
-
-
 
 
 
@@ -77,6 +69,7 @@ const createUser = () => {
 }
     
 const renderUser = (user) => {
+    userName = user.name
     userId = parseInt(user.id, 10) 
 
     const header = document.querySelector('header')
@@ -102,7 +95,7 @@ const createGame = () => {
     const formGame = document.getElementById('game')
     formGame.addEventListener('submit', function(event){
         event.preventDefault()
-        clock()
+        // clock()
 
         if (div.style.display === "block") {
             div.style.display = "none";
@@ -209,6 +202,7 @@ const renderGame = (shuffleMatchedArray) => {
 
     const mainDiv = document.getElementById('mainDiv')
     const h3 = document.createElement('h3')
+    h3.style.textAlign = 'center'
     h3.innerText = "Click on any card to begin"
 
     mainDiv.append(h3)
@@ -224,12 +218,11 @@ const renderGame = (shuffleMatchedArray) => {
 
     gameDiv.innerHTML = ""
     
-
-    
     shuffleMatchedArray.forEach(card => {
 
         const div = document.createElement('div')
         const p = document.createElement('p')
+        p.style.color = "white"
         const h1 = document.createElement('h1')
 
         div.dataset.view = "card"
@@ -239,12 +232,8 @@ const renderGame = (shuffleMatchedArray) => {
 // ------ starts click actions -----
         
         div.onclick = function() {
-            
 
             (this.className === 'flipped')? reverse(this,card, p, h1) : flip(this,card, p, h1) 
-
-           
-            
                 
         } // closes onclick
 
@@ -279,39 +268,83 @@ function reverse(element,card, p, h1){
         }
 }
 
-function clock(){
-    var minutesLabel = document.getElementById("minutes");
-    var secondsLabel = document.getElementById("seconds");
-    var totalSeconds = 0;
-    setInterval(setTime, 1000);
+// function clock(){
+//     var minutesLabel = document.getElementById("minutes");
+//     var secondsLabel = document.getElementById("seconds");
+//     var totalSeconds = 0;
+//     setInterval(setTime, 1000);
 
-    function setTime(){
-        ++totalSeconds;
-        secondsLabel.innerHTML = pad(totalSeconds%60);
-        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
-    }
+//     function setTime(){
+//         ++totalSeconds;
+//         secondsLabel.innerHTML = pad(totalSeconds%60);
+//         minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+//     }
 
-    function pad(val){
-        var valString = val + "";
-        if(valString.length < 2)
-        {
-            return "0" + valString;
-        }
-        else
-        {
-            return valString;
-        }
-    }
+//     function pad(val){
+//         var valString = val + "";
+//         if(valString.length < 2)
+//         {
+//             return "0" + valString;
+//         }
+//         else
+//         {
+//             return valString;
+//         }
+//     }
 
+// }
+
+
+// TO DO: buttons need to work
+const finishGame = () => {
+
+   const div = document.getElementById('mainGame')
+   div.innerHTML = ""
+
+   const mainDiv = document.getElementById('mainDiv')
+
+   const h2 = document.createElement('h2')
+   h2.innerText = "Woo hoo! You've finished the game!"
+   h2.style.textAlign = 'center'
+
+   const pTotal = document.createElement('p')
+   pTotal.innerText = `${userName}, ` + `you have a total of ${points} points.`
+   pTotal.style.textAlign = 'center'
+   
+
+   const playAgain = document.createElement('INPUT')
+   playAgain.setAttribute('type', 'submit')
+   playAgain.setAttribute('value', 'Play Again?')
+   playAgain.style.textAlign = 'center'
+   playAgain.addEventListener('click', function(event){
+       createGame()
+    })
+    
+    const br = document.createElement('br')
+
+   const logOff = document.createElement('INPUT')
+   logOff.setAttribute('type', 'submit')
+   logOff.setAttribute('value', 'Sign Off')
+   logOff.style.textAlign = 'center'
+   logOff.addEventListener('submit', function(event){
+       main()
+   })
+
+
+   div.append(h2, pTotal, playAgain, br, logOff)
+//    mainDiv.append(playAgain, logOff)
+   
 }
 
 let container = []
-
+let i = 0
 
 function checkPartner(element,card, p, h1){
     container.push(element)
     if (container.length === 2) {
         if (container[0].dataset.id === container[1].dataset.id) {
+            i++ 
+            console.log(i,'count is going up')
             // container.forEach(element => element.className = 'correct')
             pointsUpdated()
             setTimeout(function() {
@@ -320,8 +353,13 @@ function checkPartner(element,card, p, h1){
                 container[0].className = 'correct';
                 container[1].className = 'correct';
                 container = []
-                }, 1000)
-            console.log('partners')
+            }, 1000)
+
+            if (i === 5) {
+                finishGame()
+                i = 0
+            }
+            
         } else {
             setTimeout(function() {
             container[0].firstElementChild.innerHTML = " ";
@@ -332,20 +370,25 @@ function checkPartner(element,card, p, h1){
             container[1].className = 'reverse';
             container = []
             }, 1000)
-
-           
             
         }
+
+
      }
 
 }
 
 
+
 function pointsUpdated(){
     points += 2
     h4 = document.querySelector('h4')
+    // h4.getElementById('data-id')
 
-    h4.innerText = `now you have ${points}`
+    // `Hello ${user.name}, ` + `you have ${user.point} points.`
+    h4.innerText = `Hello ${userName}, ` + `you have ${points} points.`
+
+    // h4.innerText = `Your point: ${points}`
 
     // *Promise* when game finish Fetch to data base
 

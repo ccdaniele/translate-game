@@ -58,7 +58,7 @@ objects = ['headphones', 'umbrella', 'game controller', 'telephone', 'clock', 't
 
 objetos = ['auriculares', 'paraguas', 'controlador de juegos', 'teléfono', 'reloj', 'televisión', 'dinero', 'computadora', 'hacha', 'martillo', 'lápiz', 'tecla ',' cuchillo ',' presente ',' calendario ',' telescopio ',' bolígrafo ',' tijeras ',' coche ',' taxi ']
 
-objets = ['casque', 'parapluie', 'contrôleur de jeu', 'téléphone', 'regarder', 'télévision', 'argent', 'ordinateur', 'hache', 'marteau', 'crayon', 'clé ',' couteau ',' cadeau ',' calendrier ',' télescope ',' stylo ',' ciseaux ',' voiture ',' taxi ']
+objets = ['casque', 'parapluie', 'contrôleur de jeu', 'téléphone', 'regarder', 'télévision', 'argent', 'ordinateur', 'hache', 'marteau', 'crayon', 'clé ',' couteau ',' cadeau ',' calendrier ',' télescope ',' stylo ',' ciseaux ',' voiture ',' taxi']
 
 objects_emoji = ['🎧', '☂️', '🎮', '☎️', '⏰', '📺', '💵', '💻', '🪓', '🔨', '✏️', '🔑', '🔪', '🎁', '🗓', '🔭', '✒️', '✂️', '🚗' , '🚕'] 
 
@@ -77,11 +77,11 @@ sports_emoji = [ '⚽️', '🏀', '🏐', '⚾️', '🎾', '🏈', '🥊', '�
 
 i=0
 while i < 20 do 
-    Word.create(name:animals[i], category_id: 1)
-    Word.create(name:emotions[i], category_id: 2)
-    Word.create(name:foods[i],  category_id: 3)
-    Word.create(name:objects[i],  category_id: 4)
-    Word.create(name:sports[i], category_id: 5)
+    Word.create(name:animales[i], category_id: 1)
+    Word.create(name:emociones[i], category_id: 2)
+    Word.create(name:alimentos[i],  category_id: 3)
+    Word.create(name:objetos[i],  category_id: 4)
+    Word.create(name:deportes[i], category_id: 5)
     i +=1
 end
 
