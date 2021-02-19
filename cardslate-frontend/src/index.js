@@ -5,20 +5,34 @@ const GAME_URL = `${BASE_URL}/games`
 const CATEGORY_URL = `${BASE_URL}/categories`
 const WORD_URL = `${BASE_URL}/words`
 
+
+
 const main =() => {
     createUser()
-    createGame()
     fetchCategories()
 }
 
 
-// TO DO: hide form after submit
+
+let showLogin = false;
 const createUser = () => {
 
     const formLogin = document.getElementById('login')
     formLogin.addEventListener('submit', function(event){
 
     event.preventDefault()
+
+    const div = document.getElementById('loginForm')
+        
+    showLogin = !showLogin
+    if (showLogin) {
+        div.style.display = "none"
+        
+    } else {
+        div.style.display = "block"
+    }
+
+    createGame()
 
     const newUser = {
         name: event.target[0].value,
@@ -50,31 +64,33 @@ const renderUser = (user) => {
     const h4 = document.createElement('h4')
 
     h4.dataset.id = user.id 
-    h4.innerText = `Hello ${user.name} ` + `Your Points: ${user.point}`
+    h4.innerText = `Hello ${user.name}, ` + `you have ${user.point} points.`
 
     header.append(h4)
     
 }
 
 
-// TO DO: hide the form after submit
-// let showCards = false;
+
 const createGame = () => {
+
+    const div = document.getElementById('gameForm')
+    if (div.style.display === "none") {
+        div.style.display = "block";
+    } else {
+        div.style.display = "none";
+    }
 
     const formGame = document.getElementById('game')
     formGame.addEventListener('submit', function(event){
         event.preventDefault()
 
-        // const div = document.getElementById('mainForm')
-        
-        // showCards = !showCards
-        // if (showCards) {
-        //     div.style.display = "none"
-            
-        // } else {
-        //     div.style.display = "block"
-            
-        // }
+        if (div.style.display === "block") {
+            div.style.display = "none";
+        } else {
+            div.style.display = "block";
+        }
+
         
         const gameType = {
             user_id: userId,
@@ -172,7 +188,21 @@ const shuffleDeck = (game) => {
 
 const renderGame = (shuffleMatchedArray) => {
 
+    const mainDiv = document.getElementById('mainDiv')
+    const h3 = document.createElement('h3')
+    h3.innerText = "Click on any card to begin"
+
+    mainDiv.append(h3)
+
+
     const gameDiv = document.getElementById('mainGame')
+
+    if (gameDiv.style.display === "none") {
+        gameDiv.style.display = "block";
+    } else {
+        gameDiv.style.display = "none";
+    }
+
     gameDiv.innerHTML = ""
     
    
@@ -254,7 +284,7 @@ function clock(){
             return valString;
         }
     }
-    
+
 }
 
 let container = []
