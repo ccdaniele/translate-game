@@ -148,7 +148,7 @@ const fetchCategories = () => {
 const shuffle = (array) => {
     let d = array
    let w = d.map((a) => ({sort: Math.random(), value: a}))
-    let t= w.sort((a, b) => a.sort - b.sort)
+    let t = w.sort((a, b) => a.sort - b.sort)
   let x = t.map((a) => a.value)
   return x
 }
@@ -180,8 +180,6 @@ const shuffleDeck = (game) => {
     // slice shuffled word array to 5 words
     slicedWordArray = shuffledWordArray.slice(0,5)
 
-    // debugger
-
     // match the image array ids to the sliced word array ids
     matchImageArray = getMatch(imageArray, slicedWordArray)
 
@@ -190,7 +188,7 @@ const shuffleDeck = (game) => {
     
     // shuffle merged array 
     shuffleMatchedArray = shuffle(matchedArray)
-
+debugger
     // render shuffled deck
     renderGame(shuffleMatchedArray)
 
